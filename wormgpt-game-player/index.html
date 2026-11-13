@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101827">
+  <title>WormGPT Game Player</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="game.js" defer></script>
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">LOCAL AI GAME LAB</p>
+        <h1>WormGPT <span>Game Player</span></h1>
+        <p class="sub">ให้ AI สร้างด่าน แล้วดูมันเล่นแบบเรียลไทม์</p>
+      </div>
+      <div class="status" id="status" aria-live="polite">พร้อมทำงาน</div>
+    </header>
+
+    <section class="layout">
+      <section class="game-panel panel">
+        <div class="panel-heading">
+          <div><p class="eyebrow">LIVE GAME</p><h2>ภารกิจ: เก็บคริสตัล</h2></div>
+          <div class="stats"><span>💎 <b id="score">0</b>/4</span><span>⏱ <b id="moves">0</b> ก้าว</span></div>
+        </div>
+        <div class="canvas-wrap"><canvas id="game" width="720" height="480" aria-label="เกมเขาวงกต"></canvas></div>
+        <div class="controls">
+          <button class="primary" id="startBtn">▶ เริ่มให้ AI เล่น</button>
+          <button id="stepBtn">ก้าวเดียว</button>
+          <button id="pauseBtn" disabled>พัก</button>
+          <button id="resetBtn">สร้างด่านใหม่</button>
+        </div>
+        <div class="speed-row"><label for="speed">ความเร็ว AI</label><input id="speed" type="range" min="1" max="5" value="3"><span id="speedLabel">ปกติ</span></div>
+        <p class="hint">มือถือ: ใช้ปุ่มลูกศรด้านล่างเพื่อเดินเอง หรือกด “เริ่มให้ AI เล่น”</p>
+        <div class="dpad" aria-label="ปุ่มควบคุมตัวละคร">
+          <button data-dir="up" aria-label="ขึ้น">▲</button>
+          <div><button data-dir="left" aria-label="ซ้าย">◀</button><button data-dir="down" aria-label="ลง">▼</button><button data-dir="right" aria-label="ขวา">▶</button></div>
+        </div>
+      </section>
+
+      <aside class="side">
+        <section class="panel">
+          <p class="eyebrow">AI BUILDER</p><h2>ตัวสร้างเกม</h2>
+          <p class="muted">AI เตรียมแผนที่เขาวงกต วางคริสตัล 4 ชิ้น และกำหนดทางออกให้แล้ว</p>
+          <div class="build-state"><span class="dot"></span><span id="buildText">สร้างด่านสำเร็จ</span></div>
+          <button class="wide" id="buildBtn">✨ ให้ AI สร้างด่านอีกครั้ง</button>
+        </section>
+        <section class="panel">
+          <p class="eyebrow">AI ACTIVITY</p><h2>บันทึกการตัดสินใจ</h2>
+          <div id="decision" class="decision">รอเริ่มภารกิจ…</div>
+          <ol id="log" class="log" aria-live="polite"><li>ระบบพร้อมแล้ว กดเริ่มเพื่อดู AI เล่น</li></ol>
+        </section>
+      </aside>
+    </section>
+    <footer>ต้นแบบ AI แบบ Rule-Based ทำงานในเบราว์เซอร์ของคุณ · ไม่ส่งข้อมูลออกไปภายนอก</footer>
+  </main>
+</body>
+</html>
